@@ -18,6 +18,11 @@
     -   Series: list of episodes, description, actors, cover,
 -   Search
 
+### To go further
+
+-   Internationalization 
+-   Display trailers from youtube
+
 ## How to get data
 
 You have to use [this](https://www.themoviedb.org/) to get all your data. You first have to create an api key then you are free to use it.
