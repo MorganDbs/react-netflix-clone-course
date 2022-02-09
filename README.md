@@ -28,6 +28,11 @@ You have to use [this](https://www.themoviedb.org/) to get all your data. You fi
 To store data about user we will use localeStorage. This is unsafe for this kind of data but this is not the purpose of the course.
 [Documentation](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
+## Routing
+
+For your routing use react-router-dom.
+[Documentation](https://v5.reactrouter.com/web/guides/quick-start)
+
 ## Design
 
 You have to use MUI lib to build your interfaces.
