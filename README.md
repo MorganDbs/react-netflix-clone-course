@@ -16,7 +16,7 @@
 -   Display details of a show
     -   Movie: description, actors, cover, etc
     -   Series: list of episodes, description, actors, cover,
--   Search bar
+-   Search
 
 ## How to get data
 
