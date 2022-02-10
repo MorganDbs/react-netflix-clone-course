@@ -20,7 +20,7 @@
 
 ### To go further
 
--   Internationalization 
+-   Internationalization [Documentation](https://react.i18next.com/getting-started)
 -   Display trailers from youtube
 
 ## How to get data
