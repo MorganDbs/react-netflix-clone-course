@@ -15,9 +15,30 @@ code {
 /* --------------------- Menu --------------------- */
 #navbar {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center; */
+  /* justify-content: start; */
 }
+
+#lienNav {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+}
+
+.lien {
+  color: #ccc;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: large;
+}
+
+.active {
+  color: white;
+}
+
+
 
 /* --------------------- Page Login --------------------- */
 
@@ -80,6 +101,24 @@ input[type=submit]:hover {
   height: 200px;
 }
 
+#watchersImage:hover img {
+  /* L'image est doublée */
+  -webkit-transform:scale(1.15); /* Safari et Chrome */
+  -moz-transform:scale(1.15); /* Firefox */
+  -ms-transform:scale(1.15); /* Internet Explorer 9 */
+  -o-transform:scale(1.15); /* Opera */
+  transform:scale(1.15);
+  }
+
+#watchersImage:hover p {
+  /* L'image est doublée */
+  -webkit-transform:scale(1.25); /* Safari et Chrome */
+  -moz-transform:scale(1.25); /* Firefox */
+  -ms-transform:scale(1.25); /* Internet Explorer 9 */
+  -o-transform:scale(1.25); /* Opera */
+  transform:scale(1.25);
+  }
+  
 #btnManage {
   margin-top: 60px;
   padding: 20px;
