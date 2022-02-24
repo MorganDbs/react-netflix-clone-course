@@ -4,9 +4,17 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { css, cx } from '@emotion/css'
+// require('dotenv').config()
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <div className={css`
+   height: 100%; min-height:100%; background-color:#141414
+    `}>
+      <App />
+    </div>
+    
   </React.StrictMode>,
   document.getElementById('root')
 );
