@@ -11,7 +11,7 @@ import {
 const Homepage: FC = () => {
 
     
-    const  signIn = () => {   
+    const signIn = () => {   
         window.location.href='/watchers'
     }
 
@@ -25,16 +25,14 @@ const Homepage: FC = () => {
                     <img src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg" alt="" className={css`height: 40px; padding: 30px;`}/>
                     {/* <img src="https://image.tmdb.org/t/p/original/xRyINp9KfMLVjRiO5nCsoRDdvvF.jpg" alt="" /> */}
                 </div>
-                <div id='lienNav'>
-                    
+                <div id='lienNav'> 
                    <Link to="/homepage" className='lien active'>Accueil </Link>
                    <Link to="/" className='lien'>Login </Link>
                    <Link to="/watchers" className='lien'>Watchers </Link>
                 </div>
                      
             </div>
-           
-
+            
                     <p className={css`color:white`}> Accueil - Séries - Films - Nouveautés les plus regardées - Ma liste </p>
     
 </div>

@@ -18,19 +18,27 @@ const Watchers: FC = () => {
         
         <div id="watchers">
             <div id='watchersImage'>
+                <a href='/homepage'>
                 <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSw2Q6J1xM3k3xAbRpWhsI2KmzdgF_X4uU3lF_kBXqI6BLWrU0kOu0f1uNkanAH2E_iE8&usqp=CAU" alt="" />
-                <p> Nom </p>
+                </a>
+                <p> Nom </p> 
             </div>
             <div id='watchersImage'>
+                <a href='/homepage'>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtgY5Bs3qw-jB1PFP6D3bX4rMDlTqg91Log3-fq9aprDPnPp_DHwv5NvIgCLghZcey-Zo&usqp=CAU" alt="" />
+                </a>
                 <p> Nom </p>
             </div>
             <div id='watchersImage' >
+                <a href='/homepage'>
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcqOmIVYBoPoiR5kWV8LsjRzd0FiKP-HqAZpsFAS-bYVMQiHwKBXbjXYWNMQiQzRT7Phc&usqp=CAU" alt="" />
+                </a>
                 <p> Nom </p>
             </div>
             <div id='watchersImage'>
+                <a href='/homepage'>
                 <img src={addProfil}  alt="" />
+                </a>
                 <p> Add Profile </p>
             </div>
         </div>
