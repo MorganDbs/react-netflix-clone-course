@@ -10,7 +10,7 @@ import { css, cx } from '@emotion/css'
 ReactDOM.render(
   <React.StrictMode>
     <div className={css`
-   height: 100%; min-height:100%; background-color:#141414
+   min-height:100%; background-color:#141414
     `}>
       <App />
     </div>

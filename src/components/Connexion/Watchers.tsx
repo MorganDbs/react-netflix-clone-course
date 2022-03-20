@@ -1,7 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { FC } from 'react';
 import { css } from '@emotion/css';
-import addProfil from '../assets/images/addProfil.png'
+import addProfil from '../../assets/images/addProfil.png'
 
 const Watchers: FC = () => {
 

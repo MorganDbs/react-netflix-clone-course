@@ -7,9 +7,9 @@ import {
     Route,
 } from "react-router-dom";
 
-import Login from './components/Login';
-import Watchers from './components/Watchers';
-import Homepage from './components/Homepage';
+import Login from './components/Connexion/Login';
+import Watchers from './components/Connexion/Watchers';
+import Homepage from './components/Homepage/Homepage';
 
 const App: FC = () => {
 
