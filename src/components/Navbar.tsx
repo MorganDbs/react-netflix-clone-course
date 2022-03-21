@@ -20,6 +20,7 @@ const Navbar: FC = () => {
             <Link to="/homepage" className='lien active'>Accueil </Link>
             <Link to="/" className='lien'>Login </Link>
             <Link to="/watchers" className='lien'>Watchers </Link>
+            {/* <Link to="/modal" className='lien'>Modal </Link> */}
             {/* <p className={css`color:white`}> Accueil - Séries - Films - Nouveautés les plus regardées - Ma liste </p> */}
             </div>  
         </div>
