@@ -1,0 +1,27 @@
+.user-tile {
+  width: 100px;
+  height: 125px;
+  margin-right: 40px;
+}
+
+.user-profile {
+  width: 100%;
+  height: 80%;
+  border: 3px solid rgba(48, 48, 48, 0.685);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.user-profile:hover {
+  cursor: pointer;
+  border: 3px solid rgba(221, 221, 221, 0.89);
+}
+
+.user-name {
+  color: rgb(202, 202, 202);
+  text-align: center;
+}
+
+.img-profile {
+  object-fit: contain;
+  max-width: 100px;
+}

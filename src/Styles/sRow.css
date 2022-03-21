@@ -1,0 +1,31 @@
+.div-row {
+  margin-left: 50px;
+}
+
+.row {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 70px;
+}
+
+.row::-webkit-scrollbar {
+  display: none;
+}
+
+.img-movie:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.img-movie {
+  object-fit: contain;
+  width: auto;
+  max-height: 130px;
+  margin-right: 15px;
+  transition: transform 450ms;
+}
+
+h2 {
+  color: #fff;
+}
