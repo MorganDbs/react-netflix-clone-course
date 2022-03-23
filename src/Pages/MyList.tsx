@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import Navbar from './Composants/Navbar';
-import MovieTile from './Composants/MovieTile';
+import Navbar from '../Composants/Navbar';
+import MovieTile from '../Composants/MovieTile';
 import { useSelector } from 'react-redux';
-import './Styles/sMyList.css';
+import '../Styles/sMyList.css';
 
 export default function MyList(){
     const listUser = useSelector((state: any) => state.user.list);
@@ -21,12 +21,14 @@ export default function MyList(){
         <div>
             <Navbar />
         </div>
-        <div className="body-myList">
-            <h2>Ma liste </h2>
-            <div className="myList">
-            {watchList.map((movie: any) => (
+        <div className="body_myList">
+            <div>
+                <h2>Ma liste</h2>
+            </div>
+            <div className="list">
+                {watchList.map((movie: any) => (
                     <MovieTile movie={movie.payload}/>
-            ))}
+                ))}
             </div>
         </div>
     </div>

@@ -1,6 +1,7 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React, { useEffect }from 'react';
 import axios from '../Requests/Axios';
+import request from '../Requests/Request';
 import '../Styles/sBanner.css';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoIcon from '@mui/icons-material/Info';
@@ -14,12 +15,39 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addMovie, deleteMovie } from '../features/user/userSlice';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import SameTile from '../Composants/SameTile';
+
+interface Movie {
+    id: number;
+    title: string;
+    backdrop_path: string;
+    overview: string;
+    release_date: string;
+    runtime: number;
+    adult: boolean;
+    genres: any[];
+    production_companies: any[];
+}
+
+const defaultMovie = {
+    id: 0,
+    title: "",
+    backdrop_path: "",
+    overview: "",
+    release_date: "",
+    runtime: 0,
+    adult: false,
+    genres: [""],
+    production_companies: [""],
+}
 
 export default function Banner(props: {fetchUrl: string}) {
     const { fetchUrl } = props;
     const [movie, setMovie]: any = React.useState([]);
     const [open, setOpen] = React.useState(false);
     const dispatch = useDispatch()
+    const [sameMovies, setSameMovies] = React.useState([defaultMovie]);
+    const [detailMovie, setDetailMovie] = React.useState(defaultMovie);
     const [openAlertValid, setOpenAlertValid] = React.useState(false);
     const [openAlertError, setOpenAlertError] = React.useState(false);
     const listUser = useSelector((state: any) => state.user.list);
@@ -40,36 +68,68 @@ export default function Banner(props: {fetchUrl: string}) {
             return response;
             }
             fetchData();
-        }, [fetchUrl]);
+    }, [fetchUrl]);
 
-        function truncate(str: string, n: number) {
-            return str?.length > n ? str.substr(0, n - 1) + '...' : str;
-        }
-
-        const handleCloseModalCard = () => {
-            setOpen(false);
-        };
-    
-        const handleOpenModal = () => {
-            setOpen(true);
-        };
-
-        const handleClickAlert = (movie: any) => {
-            for (let i = 0; i < watchList.length; i++) {
-                if (watchList[i].payload.id === movie.id) {
-                    dispatch(deleteMovie({payload: movie}));
-                    setOpenAlertError(true);
-                    return;
-                }
+    useEffect (() => {
+        async function fetchData() {
+            console.log(request.genre + movie.genre_ids[0]);
+            const response = await axios.get(request.genre + movie.genre_ids[0]);
+            get6SameMovies(response.data.results);
+            console.log(response.data.results);
+            
+            return response;
             }
-            dispatch(addMovie({payload: movie}));
-            setOpenAlertValid(true);
-          };
+            fetchData();
+        }, [movie.genre_ids]);
+
+    useEffect(() => {
+        async function fetchData() {
+        const response = await axios.get(`/movie/${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`)
+        setDetailMovie(response.data);        
+        return response;
+        }
+        fetchData();
+    }, [movie.id]);
+
+    const get6SameMovies = (results : Movie[]) => {
+        console.log(results);
         
-        const handleCloseAlert = () => {
-            setOpenAlertValid(false);
-            setOpenAlertError(false);
-          };
+        var movies: Movie[] = [];
+        for (let i = 0; i < results.length; i++) {
+            if (i < 6) {
+                movies.push(results[i]);
+            }
+        }
+        setSameMovies(movies);
+    }
+    
+
+    function truncate(str: string, n: number) {
+        return str?.length > n ? str.substr(0, n - 1) + '...' : str;
+    }
+    const handleCloseModalCard = () => {
+        setOpen(false);
+    };
+
+    const handleOpenModal = () => {
+        setOpen(true);
+    };
+    const handleClickAlert = (movie: any) => {
+        for (let i = 0; i < watchList.length; i++) {
+            if (watchList[i].payload.id === movie.id) {
+                dispatch(deleteMovie({payload: movie}));
+                setOpenAlertError(true);
+                return;
+            }
+        }
+        dispatch(addMovie({payload: movie}));
+        setOpenAlertValid(true);
+      };
+    
+    const handleCloseAlert = () => {
+        setOpenAlertValid(false);
+        setOpenAlertError(false);
+      };
         
     return ( 
         
@@ -91,7 +151,7 @@ export default function Banner(props: {fetchUrl: string}) {
                     </div>
             </div>
             <div className="banner--fadeBottom"></div>
-            <Dialog open={open} onClose={handleCloseModalCard} className="modal"> 
+            <Dialog open={open} onClose={handleCloseModalCard} className="modal" maxWidth="md"> 
                 <div className="modal-card">
                     <div className="modal-header" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
                         <div className="exit-button">
@@ -103,17 +163,42 @@ export default function Banner(props: {fetchUrl: string}) {
                         <div className="div-button">
                             <button className="play_button"><PlayArrowIcon sx={{height:"20px" }}/>Lecture</button>
                             <button className="round" onClick={() => handleClickAlert(movie)}><AddIcon /></button>
-                            <button className="round" onClick={handleCloseModalCard}><ThumbUpIcon /></button>
-                            <button className="round" onClick={handleCloseModalCard}><ThumbDownIcon /></button>
+                            <button className="round"><ThumbUpIcon /></button>
+                            <button className="round"><ThumbDownIcon /></button>
                         </div>
                     </div>
-                    <div className="description">
+                    <div className="description">   
                         <div className="overview">
-                            <p>{movie.release_date}</p>
-                            <p>{truncate(movie.overview, 200)}</p>
+                            <div className="left">
+                                <p>{movie.release_date} | {detailMovie.runtime} Min</p>
+                                <p>{truncate(movie.overview, 200)}</p>
+                            </div>
+                            <div className="right">
+                                <p className="distribution"><span className="gray">Distribution: </span> 
+                                {detailMovie.production_companies.map((company: any) => (
+                                    <span key={company.id}>{company.name}, </span>
+                                ))}
+                                </p>
+                                <p className="genre"><span className="gray">Genre: </span>
+                                {detailMovie.genres.map((genre: any) => (
+                                    <span key={genre.id}>{genre.name}, </span>
+                                ))}
+                                </p>
+                            </div>
                         </div>
-                        <div>
+                        <div className="other_title_head">
                             <h3>Titre similaire</h3>
+                            <div className="other_title">
+
+                            {sameMovies.map((movie: any) => (
+                                            movie.backdrop_path !==  null ? 
+                                            <div className="other_tile">
+                                                <SameTile movie={movie} />
+                                            </div>
+                                                : null
+                                            
+                            ))}
+                            </div>
                         </div>
                     </div>
                 </div>

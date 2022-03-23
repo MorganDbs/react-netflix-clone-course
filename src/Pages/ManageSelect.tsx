@@ -1,8 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { setManagedUser } from './features/user/userSlice';
-import './Styles/sWiW.css';
+import { setManagedUser } from '../features/user/userSlice';
+import '../Styles/sWiW.css';
 import { NavLink } from "react-router-dom";
 
 export default function ManageSelect(){
@@ -16,7 +16,7 @@ export default function ManageSelect(){
 
     <div className="all">
         <div className="header">
-            <NavLink to="/">
+            <NavLink to="/wiw">
                 <img className="logo"
                     src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
                     alt="Netflix logo" />
@@ -42,7 +42,7 @@ export default function ManageSelect(){
             </div>
         </div>
         <div className="manage_button_div">
-            <NavLink to="/">
+            <NavLink to="/wiw">
                 <button className="manage_button">Terminé</button>
             </NavLink>
         </div>

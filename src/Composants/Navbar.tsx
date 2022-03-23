@@ -43,14 +43,7 @@ export default function Navbar() {
                     }
                   : {}
               } className="link">Film</NavLink>
-                <NavLink to="/nouveautes" style={({ isActive }) =>
-                isActive
-                  ? {
-                      textDecoration: "none",
-                      fontWeight: "bold",
-                    }
-                  : {}
-              } className="link">Nouveautés les plus regardées</NavLink>
+                <span className="link">Nouveautés les plus regardées</span>
                 <NavLink to="/liste" style={({ isActive }) =>
                 isActive
                   ? {
@@ -63,11 +56,11 @@ export default function Navbar() {
 
             <div className="nav_search">
                 <SearchIcon className="icon link" />
-                <a href="/direct" className="link">DIRECT</a>
-                <a href="/jeunesse" className="link">Jeunesse</a>
+                <span className="link">DIRECT</span>
+                <span className="link">Jeunesse</span>
                 <NotificationsIcon className="icon link"/>
             </div>
-            <NavLink to="/" className="nav_logo">
+            <NavLink to="/wiw" className="nav_logo">
               <img className="profile_picture icon"
                 src={`${connectedUser.picture}`}
                 alt="Profile logo" />

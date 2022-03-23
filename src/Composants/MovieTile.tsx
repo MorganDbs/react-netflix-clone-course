@@ -13,12 +13,39 @@ import { useSelector, useDispatch } from 'react-redux';
 import { addMovie, deleteMovie } from '../features/user/userSlice';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
+import SameTile from '../Composants/SameTile';
+
+interface Movie {
+    id: number;
+    title: string;
+    backdrop_path: string;
+    overview: string;
+    release_date: string;
+    runtime: number;
+    adult: boolean;
+    genres: any[];
+    production_companies: any[];
+}
+
+const defaultMovie = {
+    id: 0,
+    title: "",
+    backdrop_path: "",
+    overview: "",
+    release_date: "",
+    runtime: 0,
+    adult: false,
+    genres: [""],
+    production_companies: [""],
+}
+
 
 export default function MovieTile(props: { movie: any}) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { movie } = props;
+    const [detailMovie, setDetailMovie] = React.useState(defaultMovie);
     const [open, setOpen] = React.useState(false);
-    const [movies, setMovies] = React.useState([]);
+    const [sameMovies, setSameMovies] = React.useState([defaultMovie]);
     const dispatch = useDispatch()
     const [openAlertValid, setOpenAlertValid] = React.useState(false);
     const [openAlertError, setOpenAlertError] = React.useState(false);
@@ -64,23 +91,39 @@ export default function MovieTile(props: { movie: any}) {
     useEffect (() => {
         async function fetchData() {
             const response = await axios.get(request.genre + movie.genre_ids[0]);
-            setMovies(response.data.results);
+            get6SameMovies(response.data.results);
             return response;
             }
             fetchData();
-        }, []);
+        }, [movie.genre_ids]);
+
+    const get6SameMovies = (results : Movie[]) => {
+        var movies: Movie[] = [];
+        for (let i = 0; i < results.length; i++) {
+            if (i < 6) {
+                movies.push(results[i]);
+            }
+        }
+        setSameMovies(movies);
+    }
+
+    useEffect(() => {
+        async function fetchData() {
+        const response = await axios.get(`/movie/${movie.id}?api_key=${process.env.REACT_APP_API_KEY}&language=fr-FR`)
+        setDetailMovie(response.data);        
+        return response;
+        }
+        fetchData();
+    }, [movie.id]);
 
     return (
         <div>
             {movie.backdrop_path !==  null ? 
-                <div key={movie.id} onClick={handleOpenModal}>
-                    <img className="img-movie"
-                        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} 
-                        alt={movie.title} 
-                    />
+                <div key={movie.id} onClick={handleOpenModal} className="img-movie" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}>
+                    <span className="title_movie_tile">{movie.title}</span>
                 </div> : null
             }
-            <Dialog open={open} onClose={handleCloseModalCard} className="modal"> 
+            <Dialog open={open} onClose={handleCloseModalCard} className="modal" maxWidth="md"> 
                 <div className="modal-card">
                     <div className="modal-header" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`}}>
                         <div className="exit-button">
@@ -92,24 +135,38 @@ export default function MovieTile(props: { movie: any}) {
                         <div className="div-button">
                             <button className="play_button"><PlayArrowIcon sx={{height:"20px" }}/>Lecture</button>
                             <button className="round" onClick={() => handleClickAlert(movie)}><AddIcon /></button>
-                            <button className="round" onClick={handleCloseModalCard}><ThumbUpIcon /></button>
-                            <button className="round" onClick={handleCloseModalCard}><ThumbDownIcon /></button>
+                            <button className="round"><ThumbUpIcon /></button>
+                            <button className="round"><ThumbDownIcon /></button>
                         </div>
                     </div>
                     <div className="description">   
                         <div className="overview">
-                            <p>{movie.release_date}</p>
-                            <p>{truncate(movie.overview, 200)}</p>
+                            <div className="left">
+                                <p>{movie.release_date} | {detailMovie.runtime} Min</p>
+                                <p>{truncate(movie.overview, 200)}</p>
+                            </div>
+                            <div className="right">
+                                <p className="distribution"><span className="gray">Distribution: </span> 
+                                {detailMovie.production_companies.map((company: any) => (
+                                    <span key={company.id}>{company.name}, </span>
+                                ))}
+                                </p>
+                                <p className="genre"><span className="gray">Genre: </span>
+                                {detailMovie.genres.map((genre: any) => (
+                                    <span key={genre.id}>{genre.name}, </span>
+                                ))}
+                                </p>
+                            </div>
                         </div>
-                        <div className="other-title-head">
+                        <div className="other_title_head">
                             <h3>Titre similaire</h3>
-                            <div className="other-title">
-                            {movies.map((movie: any) => (
+                            <div className="other_title">
+
+                            {sameMovies.map((movie: any) => (
                                             movie.backdrop_path !==  null ? 
-                                                    <img key={movie.id} onClick={handleOpenModal} className="img-movie-other"
-                                                        src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`} 
-                                                        alt={movie.title} 
-                                                    />
+                                            <div className="other_tile">
+                                                <SameTile movie={movie} />
+                                            </div>
                                                 : null
                                             
                             ))}

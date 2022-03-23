@@ -1,9 +1,9 @@
-.myList {
+.list {
   display: flex;
   flex-wrap: wrap;
 }
 
-.body-myList {
+.body_myList {
   margin-top: 2rem;
   margin-bottom: 2rem;
   margin-left: 3rem;

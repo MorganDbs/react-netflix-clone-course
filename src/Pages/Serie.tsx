@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import Navbar from './Composants/Navbar';
-import Row from './Composants/Row';
-import request from './Requests/Request';
-import Banner from './Composants/Banner';
+import Navbar from '../Composants/Navbar';
+import Row from '../Composants/Row';
+import request from '../Requests/Request';
+import Banner from '../Composants/Banner';
 
 export default function Serie(){
     return (

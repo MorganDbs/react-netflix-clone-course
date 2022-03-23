@@ -12,7 +12,6 @@ const Requests = {
     trending: `/trending/all/week?api_key=${API_KEY}&language=${API_LANGUAGE}&page=1`,
     romantic: `/discover/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=10749`,
     scienceFiction: `/discover/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=878`,
-    banner: `/movie/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=1`,
 
     //serie
     mostPopularSeries: `/tv/popular?api_key=${API_KEY}&language=${API_LANGUAGE}&page=1`,
@@ -23,6 +22,7 @@ const Requests = {
 
     //genre
     genre: `/discover/movie?api_key=${API_KEY}&language=${API_LANGUAGE}&sort_by=popularity.desc&page=1&with_genres=`,
+
 }
 
 export default Requests;

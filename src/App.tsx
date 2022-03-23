@@ -1,13 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import HomePage from './HomePage';
-import Serie from './Serie';
-import Movie from './Movie';
-import MyList from './MyList';
-import WhoIsWatching from './WhoIsWatching';
-import AddProfile from './AddProfile';
-import ManageSelect from './ManageSelect';
-import Manage from './Manage';
+import HomePage from './Pages/HomePage';
+import Serie from './Pages/Serie';
+import Movie from './Pages/Movie';
+import MyList from './Pages/MyList';
+import WhoIsWatching from './Pages/WhoIsWatching';
+import AddProfile from './Pages/AddProfile';
+import ManageSelect from './Pages/ManageSelect';
+import Manage from './Pages/Manage';
+import SignIn from './Pages/SignIn';
 import {
     BrowserRouter as Router,
     Routes,
@@ -18,7 +19,9 @@ export default () => {
     return (
         <Router>
             <Routes>
-                <Route path="/" element={<WhoIsWatching />}>
+                <Route path="/" element={<SignIn />}>
+                </Route>
+                <Route path="/wiw" element={<WhoIsWatching />}>
                 </Route>
                 <Route path="/newprofile" element={<AddProfile />}>
                 </Route>
@@ -32,13 +35,7 @@ export default () => {
                 </Route>
                 <Route path="/serie" element={<Serie />}>      
                 </Route>
-                <Route path="/nouveautes" element={<HomePage />}>      
-                </Route>
                 <Route path="/liste" element={<MyList />}>      
-                </Route>
-                <Route path="/direct" element={<HomePage />}>      
-                </Route>
-                <Route path="/jeunesse" element={<HomePage />}>      
                 </Route>
             </Routes>
         </Router>

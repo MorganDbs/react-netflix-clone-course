@@ -33,7 +33,11 @@
 }
 
 #textField {
-  background-color: rgb(177, 177, 177);
+  background-color: rgb(216, 216, 216);
+}
+
+.form_manage {
+  margin-left: 10px;
 }
 
 .buttons {
@@ -96,7 +100,6 @@
   padding-top: 0.9rem;
   background-color: rgb(177, 0, 0);
   padding-bottom: 0.5rem;
-  margin-left: 10px;
   margin-top: 15px;
 }
 

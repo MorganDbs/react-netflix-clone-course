@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
-import Navbar from './Composants/Navbar';
-import Row from './Composants/Row';
-import request from './Requests/Request';
-import Banner from './Composants/Banner';
+import Navbar from '../Composants/Navbar';
+import Row from '../Composants/Row';
+import request from '../Requests/Request';
+import Banner from '../Composants/Banner';
 
 export default function HomePage(){
     return (
@@ -13,7 +13,7 @@ export default function HomePage(){
             <Navbar />
         </div>
         <div>
-            <Banner fetchUrl={request.banner}/>
+            <Banner fetchUrl={request.mostPopular}/>
         </div>
         <div>
             <Row title={"Les plus gros succès sur Netflix"} fetchUrl={request.mostPopular}/>

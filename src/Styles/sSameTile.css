@@ -1,0 +1,60 @@
+.round {
+  cursor: pointer;
+  color: rgb(199, 199, 199);
+  outline: none;
+  border: 2px solid rgb(199, 199, 199);
+  font-weight: 700;
+  font-size: larger;
+  border-radius: 360px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  margin-right: 1rem;
+  background-color: rgba(29, 29, 29, 0.671);
+  padding-bottom: 0.1rem;
+  padding-top: 0.3rem;
+}
+
+.round:hover {
+  border: 2px solid #fff;
+  color: rgb(255, 255, 255);
+}
+
+.sametile {
+  width: 240px;
+  border-radius: 10px;
+  background-color: rgb(63, 63, 63);
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+.samemovieimg {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  background-position: center center;
+  background-size: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.sametileoverview {
+  text-align: center;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  padding-bottom: 0.2rem;
+}
+
+.samemovietitle {
+  padding-top: 6rem;
+  padding-left: 1rem;
+  color: rgb(255, 253, 253);
+}
+
+.samemoviedate {
+  margin-left: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

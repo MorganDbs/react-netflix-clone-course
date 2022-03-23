@@ -1,17 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-// const picture = [
-//   'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFEHx5mAAQUNHxAsuV6Yy65b9Zm6xhMgfuytCCGJoUmcbmVAOGMI1s3Bomk0rTD4A7cM4WmoF9s0gzYVLGf6_E9zEpQ.png',
-//   'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFE8UEhUa5IEclqus4LfdUXiUfdxlqSX39C73ezhuomcUyANcCR77_SkF_7WKRDLiG1NkdOUzxSxg-3PiD41qn5qDfA.png',
-//   'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFM65BrEcA69FfK3v0XwQ3Rr61x9fXX1u6K5k9Ql_5cX2F2jZEx8cL7cYb_N40Yc-x2gsd3I59EZFnOaAc61CrwzCMQ.png',
-//   'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABTYctxxbe-UkKEdlMxXm4FVGD6DqTHkQ0TQ5CQJ9jbOMnG0CYxYcSICcTUQz8DrB7CpKUGpqJVMtEqksLlvSJx2ac3Ak.png',
-// ]
-
 const userOne = {
     id: 1,
     name: 'Flavien',
-    email: 'fl@gmail.com',
-    password: '123456',
     picture: 'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFE8UEhUa5IEclqus4LfdUXiUfdxlqSX39C73ezhuomcUyANcCR77_SkF_7WKRDLiG1NkdOUzxSxg-3PiD41qn5qDfA.png',
     isLogged: false,
     watchList: [],
@@ -19,10 +10,8 @@ const userOne = {
 
 const userTwo = {
     id: 2,
-    name: 'John',
-    email: 'fl@gmail.com',
-    password: '123456',
-    picture: 'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFM65BrEcA69FfK3v0XwQ3Rr61x9fXX1u6K5k9Ql_5cX2F2jZEx8cL7cYb_N40Yc-x2gsd3I59EZFnOaAc61CrwzCMQ.png',
+    name: 'Geralt',
+    picture: 'https://occ-0-55-56.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAAFJSe2el5rVnCVz5d1R8pnqYzBiXwEM7ooxTNY1LCrf6HzWO0RCORDzTO9IlOqpmCYCKIVyjPX5xMFw-RLz9WpqYvEg.png',
     isLogged: false,
     watchList: [],
 }

@@ -1,9 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 import React from 'react';
 import { useSelector } from 'react-redux';
-import UserTile from './Composants/UserTile';
+import UserTile from '../Composants/UserTile';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
-import './Styles/sWiW.css';
+import '../Styles/sWiW.css';
 import { NavLink } from "react-router-dom";
 
 export default function WhoIsWatching(){
@@ -13,7 +13,7 @@ export default function WhoIsWatching(){
 
     <div className="all">
         <div className="header">
-            <NavLink to="/">
+            <NavLink to="/wiw">
                 <img className="logo"
                     src="https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg" 
                     alt="Netflix logo" />
