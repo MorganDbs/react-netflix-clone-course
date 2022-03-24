@@ -30,7 +30,7 @@ if (!modalOpen) return null;
         <div className="modal">
             {children}
         </div>
-    </Wrapper>
+        </Wrapper>
      </div>
     ,
     document.body
