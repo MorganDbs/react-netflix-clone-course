@@ -56,7 +56,7 @@ export default function SameTile(props: { movie: any}) {
                 <button className="round" onClick={() => handleClickAlert(movie)}><AddIcon /></button>
             </div>
             <div className="sametileoverview">
-                <p>{truncate(movie.overview, 150)}</p>
+                <p>{truncate(movie.overview, 140)}</p>
             </div>
             <div className="alert">
                 <Snackbar open={openAlertValid} autoHideDuration={6000} onClose={handleCloseAlert}>

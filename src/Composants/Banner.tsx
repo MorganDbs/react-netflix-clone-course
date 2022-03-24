@@ -72,11 +72,8 @@ export default function Banner(props: {fetchUrl: string}) {
 
     useEffect (() => {
         async function fetchData() {
-            console.log(request.genre + movie.genre_ids[0]);
             const response = await axios.get(request.genre + movie.genre_ids[0]);
             get6SameMovies(response.data.results);
-            console.log(response.data.results);
-            
             return response;
             }
             fetchData();
@@ -92,8 +89,6 @@ export default function Banner(props: {fetchUrl: string}) {
     }, [movie.id]);
 
     const get6SameMovies = (results : Movie[]) => {
-        console.log(results);
-        
         var movies: Movie[] = [];
         for (let i = 0; i < results.length; i++) {
             if (i < 6) {

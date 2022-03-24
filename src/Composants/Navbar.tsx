@@ -7,7 +7,6 @@ import { NavLink } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 export default function Navbar() {
-  const userList = useSelector((state: any) => state.user.list);
   const connectedUser = useSelector((state: any) => state.user.connectedUser);
 
     return (

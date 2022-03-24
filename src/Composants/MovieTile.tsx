@@ -40,9 +40,9 @@ const defaultMovie = {
 }
 
 
-export default function MovieTile(props: { movie: any}) {
+export default function MovieTile(props: { movie: any, type: string }) {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { movie } = props;
+    const { movie, type } = props;
     const [detailMovie, setDetailMovie] = React.useState(defaultMovie);
     const [open, setOpen] = React.useState(false);
     const [sameMovies, setSameMovies] = React.useState([defaultMovie]);
@@ -118,10 +118,15 @@ export default function MovieTile(props: { movie: any}) {
 
     return (
         <div>
-            {movie.backdrop_path !==  null ? 
+            {type === "backdrop" ?
+                movie.backdrop_path !==  null ? 
                 <div key={movie.id} onClick={handleOpenModal} className="img-movie" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})` }}>
                     <span className="title_movie_tile">{movie.title}</span>
-                </div> : null
+                </div> : null 
+            :
+                movie.poster_path !==  null ? 
+                <div key={movie.id} onClick={handleOpenModal} className="img-movie-poster" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.poster_path})` }}>
+                </div> : null 
             }
             <Dialog open={open} onClose={handleCloseModalCard} className="modal" maxWidth="md"> 
                 <div className="modal-card">

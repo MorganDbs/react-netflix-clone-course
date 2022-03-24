@@ -27,7 +27,7 @@ export default function MyList(){
             </div>
             <div className="list">
                 {watchList.map((movie: any) => (
-                    <MovieTile movie={movie.payload}/>
+                    <MovieTile movie={movie.payload} type="backdrop"/>
                 ))}
             </div>
         </div>

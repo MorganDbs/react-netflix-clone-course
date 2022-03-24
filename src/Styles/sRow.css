@@ -2,14 +2,49 @@
   margin-left: 50px;
 }
 
-.row {
+.row-bis {
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
-  margin-bottom: 70px;
+  scroll-behavior: smooth;
+  position: relative;
+  height: 130px;
 }
 
-.row::-webkit-scrollbar {
+.row {
+  display: flex;
+  margin-bottom: 70px;
+  height: 130px;
+}
+
+.prev {
+  height: 100%;
+  width: 130px;
+  transition: transform 450ms;
+  background-color: rgba(37, 37, 37, 0.137);
+  border: none;
+
+}
+
+.next {
+  height: 100%;
+  width: 130px;
+  transition: transform 450ms;
+  background-color: rgba(37, 37, 37, 0.137);
+  border: none;
+}
+
+.prev:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.next:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.row-bis::-webkit-scrollbar {
   display: none;
 }
 
@@ -20,10 +55,9 @@
 
 .img-movie {
   width: 250px;
-  height: 150px;
+  height: 130px;
   background-position: center center;
   background-size: cover;
-  max-height: 130px;
   margin-right: 15px;
   transition: transform 450ms;
 }
@@ -38,4 +72,38 @@
 
 h2 {
   color: #fff;
+}
+
+.row-poster {
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  margin-bottom: 70px;
+  scroll-behavior: smooth;
+  position: relative;
+  height: 230px;
+}
+
+.row-poster::-webkit-scrollbar {
+  display: none;
+}
+
+.img-movie-poster {
+  width: 170px;
+  height: 230px;
+  background-position: center center;
+  background-size: cover;
+  margin-right: 15px;
+  transition: transform 450ms;
+}
+
+
+.img-movie-poster:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.numbers {
+  font-size: 260px;
+  margin-right: -50px;
 }
