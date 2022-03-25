@@ -17,12 +17,11 @@ const Navbar: FC = () => {
                 {/* <img src="https://image.tmdb.org/t/p/original/xRyINp9KfMLVjRiO5nCsoRDdvvF.jpg" alt="" /> */}
             </div>
             <div id='lienNav'> 
-            <Link to="/homepage" className='lien active'>Accueil </Link>
-            <Link to="/series" className='lien'> Series </Link>
-            <Link to="/" className='lien'>Login </Link>
-            <Link to="/watchers" className='lien'>Watchers </Link>
-            {/* <Link to="/modal" className='lien'>Modal </Link> */}
-            {/* <p className={css`color:white`}> Accueil - Séries - Films - Nouveautés les plus regardées - Ma liste </p> */}
+                {/* <Link to="/homepage" className='lien active'>Home </Link> */}
+                <Link to="/homepage" className='lien'>Home </Link>
+                <Link to="/movies" className='lien'>Movies </Link>
+                <Link to="/series" className='lien'> Series </Link>
+                <Link to="/wishlist" className='lien'> Wish List Movies</Link>
             </div>  
         </div>
     )

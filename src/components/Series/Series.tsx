@@ -27,12 +27,9 @@ const Series: FC = () => {
              <Row title="Dramas" fetchUrl={requests.fetchSeriesDrama} isLarge={false}  isSerie={true}/>
              <Row title="Documentaires" fetchUrl={requests.fetchSeriesDocumentaries} isLarge={false}  isSerie={true}/>
              <Row title="Mystères" fetchUrl={requests.fetchSeriesMystery} isLarge={false}  isSerie={true}/>
-
-
+             
         </div>
       
-    
-    
     )
 }
 

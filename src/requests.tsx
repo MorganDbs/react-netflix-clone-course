@@ -19,7 +19,7 @@ const requests = {
     fetchSeriesScienceFictions: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_genres=10765`,
     fetchSeriesDrama: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_genres=18`,
     fetchSeriesMystery: `/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_genres=9648`,
-    fetchSeriesPop: `/discover/tv/popular?api_key=${process.env.REACT_APP_API_KEY}`,
+    fetchSeriesPop: `/tv/popular?api_key=${process.env.REACT_APP_API_KEY}`,
 
 }
 

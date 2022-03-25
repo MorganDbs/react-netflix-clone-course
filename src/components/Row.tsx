@@ -22,7 +22,7 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
     const [episodes, setEpisodes] = useState<any>([]);
     // let state = { mySelectValue = ""}
 
-    // console.log(season);
+
     
     //recup un film au clic sur son image
     async function fetchMovie(movieId:number){
@@ -43,11 +43,20 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
 
     //recup les episodes d'une série en fonction de la saison
     async function fetchSerieEpisodes(tvId:number, tvSeasonId:any){
-        console.log(tvSeasonId);
         const request = await axios.get(`https://api.themoviedb.org/3/tv/${tvId}/season/${tvSeasonId}?api_key=${process.env.REACT_APP_API_KEY}`);
-        console.log(request.data);
+        // console.log(request.data);
         setEpisodes(request.data.episodes);
         return request;
+    }
+
+    function addWishList(movieId:string,isSerie:boolean){
+        // localStorage.clear();
+        console.log('Click');
+        // if (isSerie===false) localStorage.setItem(movieId,'movie');
+        if (isSerie===false) localStorage.setItem((localStorage.length+1).toString(),movieId);
+        else localStorage.setItem((localStorage.length+1).toString(),movieId);
+        console.log(localStorage);
+
     }
     
 
@@ -101,10 +110,10 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
                                      <IoPlay className='movie_banner_btn_align play_icon'/> 
                                      <span className='movie_banner_btn_align'> Lecture </span>  
                                     </button>
-                                    <IoAddCircleOutline className='movie_banner_button_2 movie_banner_btn_align'/>
-                                    <IoThumbsUpOutline className='movie_banner_button_2 movie_banner_btn_align'/>
-                                    <IoThumbsDownOutline className='movie_banner_button_2 movie_banner_btn_align'/>
-                                </div>
+                                    <button className='modal_no_button' onClick={()=>{addWishList(movie?.id,isSerie=false)}}> <IoAddCircleOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
+                                    <button className='modal_no_button'> <IoThumbsUpOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
+                                    <button className='modal_no_button'> <IoThumbsDownOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
+                               </div>
                             </div>   
                             <div className="banner_fadeBottom"/>
                         </header>
@@ -128,7 +137,8 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
                             <div className="div_btnClose">
                                 <button type="button" className="btn_modalContent" onClick={()=>
                                     {setModalOpen(false);
-                                    setSerie([])}}> X </button>
+                                    setMovie([])}}> < IoCloseCircleSharp className='movie_banner_button_2' /> 
+                                </button>
                             </div>
                             <header className='banner'
                                 style = {{
@@ -143,9 +153,9 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
                                      <IoPlay className='movie_banner_btn_align play_icon'/> 
                                      <span className='movie_banner_btn_align'> Lecture </span>  
                                     </button>
-                                    <IoAddCircleOutline className='movie_banner_button_2 movie_banner_btn_align'/>
-                                    <IoThumbsUpOutline className='movie_banner_button_2 movie_banner_btn_align'/>
-                                    <IoThumbsDownOutline className='movie_banner_button_2 movie_banner_btn_align'/>
+                                    <button className='modal_no_button' onClick={()=>{addWishList(serie?.id,isSerie=true)}}> <IoAddCircleOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
+                                    <button className='modal_no_button'> <IoThumbsUpOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
+                                    <button className='modal_no_button'> <IoThumbsDownOutline className='movie_banner_button_2 movie_banner_btn_align'/> </button>
                                 </div>
                             </div>  
                                 <div className="banner_fadeBottom"/>
@@ -157,15 +167,12 @@ const Row = ({title,fetchUrl, isLarge, isSerie}: Props) => {
                                     <p className='movie_details_overview'> {serie?.overview}</p>
                                 </div>
                                 <div className='movie_details_item2'>
-                                    <p className='movie_details_tagline'> {movie?.tagline} </p>
-                                    <p className='movie_details_releaseDate'> {movie?.release_date} </p>
                                 </div>
                                 
                             </div>
                             <div>
                                 <select className='season_select' onChange={e => {setSeason({season: e.target.value});fetchSerieEpisodes(serie.id,e.target.value)}}>
-                                    {/* <option> Selectionner une saison </option> */}
-                                    {seasons.map((season:any) => (
+                                    {seasons.map((season:any , key:number) => (
                                         <option key={season.id} value={season.season_number}> {season.name} </option>
                                     ))}
                                 </select>

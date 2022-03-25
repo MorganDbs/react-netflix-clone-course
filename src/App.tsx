@@ -11,6 +11,8 @@ import Login from './components/Connexion/Login';
 import Watchers from './components/Connexion/Watchers';
 import Homepage from './components/Homepage/Homepage';
 import Series from './components/Series/Series';
+import Movies from './components/Movies/Movies';
+import WishList from './components/WishList/WishList';
 
 const App: FC = () => {
 
@@ -24,6 +26,8 @@ const App: FC = () => {
                 <Route path="/watchers" element={<Watchers />} />
                 <Route path="/homepage" element={<Homepage />} />
                 <Route path="/series" element={<Series />} />
+                <Route path="/movies" element={<Movies />} />
+                <Route path="/wishlist" element={<WishList />} />
             </Routes>
             
         </Router>
