@@ -1,13 +1,6 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable import/no-anonymous-default-export */
-import React, { FC, useState } from 'react';
-import { css, cx } from '@emotion/css'
-import {
-    BrowserRouter as Router,
-    Routes,
-    Route,
-    Link
-} from "react-router-dom";
+import React, { FC } from 'react';
 import Row from '../Row';
 import requests from '../../requests';
 import Navbar from '../Navbar';
@@ -27,7 +20,7 @@ const Homepage: FC = () => {
 
             <Navbar />
 
-            <Banner />
+            <Banner isSerie={false}/>
                             
              <Row title="NETFLIX ORIGINAL" fetchUrl={requests.fetchNetflixOriginals} isLarge={true} isSerie={false}/>
              <Row title="Tendance actuelle" fetchUrl={requests.fetchTrending} isLarge={false}  isSerie={false}/>

@@ -10,18 +10,33 @@ import {
 import axios from '../../axios';
 import requests from '../../requests';
 
+interface Props {
+    isSerie:boolean
+}
 
-const Banner = () => {
+const Banner = ({isSerie}:Props) => {
 
     const [movie, setMovie] = useState<any>([]); 
 
     useEffect(() => {
+       
         async function fetchData(){
-             const request = await axios.get(requests.fetchNetflixOriginals);
-             setMovie(request.data.results[
-                 Math.floor(Math.random() * request.data.results.length)
-             ])
-             return request;
+             if (!isSerie) {
+            const request = await axios.get(requests.fetchNetflixOriginals);
+            setMovie(request.data.results[
+                Math.floor(Math.random() * request.data.results.length)
+            ])
+            return request;
+        }
+        else {
+            const request = await axios.get(requests.fetchSeries);
+            setMovie(request.data.results[
+                Math.floor(Math.random() * request.data.results.length)
+            ])
+            return request;
+        }
+             
+            
         }
         fetchData();       
     }, [])

@@ -10,6 +10,7 @@ import {
 import Login from './components/Connexion/Login';
 import Watchers from './components/Connexion/Watchers';
 import Homepage from './components/Homepage/Homepage';
+import Series from './components/Series/Series';
 
 const App: FC = () => {
 
@@ -22,6 +23,7 @@ const App: FC = () => {
                 <Route path="/"  element={<Login />} />
                 <Route path="/watchers" element={<Watchers />} />
                 <Route path="/homepage" element={<Homepage />} />
+                <Route path="/series" element={<Series />} />
             </Routes>
             
         </Router>
